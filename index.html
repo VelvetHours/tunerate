@@ -2,340 +2,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080808">
-  <title>TuneRate — Your Music, Rated.</title>
-  <meta name="description" content="Discover what your music taste says about you with TuneRate.">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #080808;
-      color: white;
-      font-family: Arial, sans-serif;
-      min-height: 100vh;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 7%;
-      border-bottom: 1px solid #222;
-    }
-
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #1DB954;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      color: #aaa;
-      font-size: 13px;
-    }
-
-    .nav-links a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .nav-links a:hover {
-      color: #1DB954;
-    }
-
-    .hero {
-      min-height: 78vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-      background: radial-gradient(
-        ellipse at 50% 40%,
-        #12351f 0%,
-        #080808 65%
-      );
-    }
-
-    .tag {
-      color: #1DB954;
-      border: 1px solid #1DB95455;
-      background: #1DB95412;
-      padding: 9px 16px;
-      border-radius: 30px;
-      font-size: 12px;
-      margin-bottom: 28px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.1;
-      max-width: 800px;
-      letter-spacing: -3px;
-    }
-
-    h1 span {
-      color: #1DB954;
-    }
-
-    .subtitle {
-      color: #aaa;
-      margin-top: 22px;
-      font-size: 16px;
-      line-height: 1.7;
-      max-width: 540px;
-    }
-
-    .search-box {
-      display: flex;
-      width: min(600px, 100%);
-      gap: 10px;
-      margin-top: 38px;
-      padding: 8px;
-      background: #181818;
-      border: 1px solid #333;
-      border-radius: 14px;
-    }
-
-    .search-box input {
-      flex: 1;
-      min-width: 0;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 14px;
-      font-size: 14px;
-    }
-
-    .search-box button {
-      background: #1DB954;
-      color: black;
-      border: none;
-      border-radius: 9px;
-      padding: 0 22px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .search-box button:hover {
-      background: #1ed760;
-    }
-
-    .note {
-      color: #888;
-      font-size: 12px;
-      margin-top: 17px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 14px;
-      margin-top: 28px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .secondary {
-      border: 1px solid #444;
-      background: #181818;
-      color: white;
-      border-radius: 10px;
-      padding: 13px 20px;
-      cursor: pointer;
-    }
-
-    .secondary:hover {
-      border-color: #1DB954;
-    }
-
-    .features {
-      padding: 65px 7%;
-      text-align: center;
-    }
-
-    .features h2 {
-      font-size: 30px;
-      margin-bottom: 12px;
-    }
-
-    .features > p {
-      color: #888;
-      margin-bottom: 35px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: #141414;
-      border: 1px solid #252525;
-      border-radius: 16px;
-      padding: 28px 20px;
-      text-align: left;
-    }
-
-    .card .emoji {
-      font-size: 28px;
-    }
-
-    .card h3 {
-      margin: 18px 0 10px;
-    }
-
-    .card p {
-      color: #999;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    footer {
-      text-align: center;
-      padding: 28px;
-      border-top: 1px solid #222;
-      color: #777;
-      font-size: 12px;
-    }
-
-    @media (max-width: 650px) {
-      .nav-links {
-        display: none;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
-      .search-box {
-        flex-direction: column;
-      }
-
-      .search-box button {
-        padding: 15px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>TuneRate — Music Taste Analyzer</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080808;color:white;font-family:Arial,sans-serif}
+nav{padding:20px 7%;border-bottom:1px solid #252525;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:23px;font-weight:bold}.logo span,.green{color:#1DB954}
+nav a{color:#aaa;text-decoration:none;margin-left:17px;font-size:13px}
+.hero{text-align:center;padding:100px 18px 85px;background:radial-gradient(ellipse,#12351f 0%,#080808 70%)}
+.tag{color:#1DB954;border:1px solid #1DB95455;padding:9px 15px;border-radius:30px;font-size:12px;display:inline-block;margin-bottom:25px}
+h1{font-size:clamp(40px,8vw,70px);letter-spacing:-2px;max-width:850px;margin:auto}
+h1 span{color:#1DB954}
+.hero p{color:#aaa;line-height:1.7;margin:20px auto;max-width:550px}
+.search{display:flex;max-width:600px;margin:30px auto 12px;background:#181818;border:1px solid #333;padding:7px;border-radius:13px}
+.search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;padding:12px}
+button{cursor:pointer;border:0;border-radius:9px;padding:13px 18px;font-weight:bold}
+.primary{background:#1DB954;color:#080808}
+.secondary{background:#202020;color:white;border:1px solid #444;margin:8px}
+.note{font-size:12px;color:#888}
+.features{padding:60px 7%;text-align:center}
+.features h2{margin-bottom:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:30px}
+.card,.panel{background:#151515;border:1px solid #292929;border-radius:15px;padding:22px;text-align:left}
+.card h3{margin:12px 0}.card p{color:#999;line-height:1.6;font-size:13px}
+#results{display:none;padding:35px 6%;max-width:1100px;margin:auto}
+.heading{margin-bottom:20px}.heading p{color:#999;margin-top:8px;font-size:13px}
+.sample{background:#332b13;color:#f3cf70;padding:11px;border-radius:9px;font-size:12px;margin-bottom:22px}
+.scorebox{display:flex;align-items:center;gap:25px;flex-wrap:wrap;background:linear-gradient(120deg,#142a1c,#171717);padding:25px;border:1px solid #285238;border-radius:18px}
+.score{width:120px;height:120px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#1DB954 0 86%,#333 86%);position:relative}
+.score:before{content:"";position:absolute;inset:9px;background:#142a1c;border-radius:50%}
+.score strong{z-index:1;font-size:34px}.score small{font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+.stat{background:#171717;border:1px solid #292929;padding:17px;border-radius:12px}
+.stat small{color:#999}.stat h2{margin-top:9px;font-size:23px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0}
+.panel h3{margin-bottom:18px}
+.bar{height:9px;background:#333;border-radius:20px;overflow:hidden;margin:8px 0 17px}
+.bar span{height:100%;display:block;background:#1DB954;border-radius:20px}
+.insight{padding:13px 0;border-bottom:1px solid #292929;color:#ccc;line-height:1.5;font-size:13px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:500px;font-size:13px}
+th,td{text-align:left;padding:13px 9px;border-bottom:1px solid #292929}
+th{color:#999}
+#trackSearch{width:100%;padding:13px;background:#202020;border:1px solid #333;border-radius:9px;color:white;margin:12px 0}
+footer{text-align:center;padding:30px;color:#777;border-top:1px solid #222;font-size:12px}
+@media(max-width:650px){
+.cards,.two{grid-template-columns:1fr}
+.stats{grid-template-columns:repeat(2,1fr)}
+nav a{margin-left:8px;font-size:11px}
+.hero{padding:75px 16px}
+.search{flex-direction:column;gap:8px}
+}
+</style>
 </head>
 <body>
+<nav>
+<div class="logo">Tune<span>Rate</span> 🎧</div>
+<div><a href="#">Home</a><a href="#features">Features</a><a href="#about">About</a></div>
+</nav>
 
-  <nav>
-    <div class="logo">Tune<span>Rate</span> 🎧</div>
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#features">Features</a>
-      <a href="#about">About</a>
-    </div>
-  </nav>
+<section class="hero">
+<div class="tag">✦ YOUR MUSIC. YOUR IDENTITY.</div>
+<h1>How Good Is Your <span>Music Taste?</span></h1>
+<p>Your music taste deserves a rating. Discover what your Spotify playlists say about you.</p>
+<div class="search">
+<input id="spotifyLink" placeholder="Paste your Spotify playlist link...">
+<button class="primary" onclick="analyze()">Analyze →</button>
+</div>
+<div class="note">♧ No Spotify visitor login required</div>
+<button class="secondary" onclick="demo()">✦ Explore Demo</button>
+<p class="note" id="message"></p>
+</section>
 
-  <section class="hero">
-    <div class="tag">✦ YOUR MUSIC. YOUR IDENTITY.</div>
+<section class="features" id="features">
+<h2>Your Music, Decoded.</h2>
+<p style="color:#999">Discover more about the music you love.</p>
+<div class="cards">
+<div class="card"><div>⭐</div><h3>Music Rating</h3><p>Discover your music taste score out of 100.</p></div>
+<div class="card"><div>📊</div><h3>Music Statistics</h3><p>Explore artists, genres and playlist insights.</p></div>
+<div class="card"><div>💚</div><h3>Hidden Gems</h3><p>Find new music and artists worth exploring.</p></div>
+</div>
+</section>
 
-    <h1>How Good Is Your <span>Music Taste?</span></h1>
+<section id="results">
+<div class="heading">
+<h2>Your TuneRate Results 🎧</h2>
+<p>Sample playlist analysis</p>
+</div>
+<div class="sample">ⓘ DEMO DATA — These tracks and statistics are illustrative examples, not retrieved from Spotify.</div>
+<div class="scorebox">
+<div class="score"><strong>86</strong></div>
+<div><h2>86/100 · Excellent</h2><p style="color:#ccc;margin-top:10px;line-height:1.6">Impressive selection! Your sample playlist balances familiar favorites with a varied collection of artists.</p></div>
+</div>
+<div class="stats">
+<div class="stat"><small>Total tracks</small><h2 id="total">8</h2></div>
+<div class="stat"><small>Unique artists</small><h2 id="artists">7</h2></div>
+<div class="stat"><small>Genres</small><h2>4</h2></div>
+<div class="stat"><small>Listening time</small><h2>29 min</h2></div>
+<div class="stat"><small>Average track</small><h2>3:38</h2></div>
+<div class="stat"><small>Top artist</small><h2>Nova</h2></div>
+</div>
+<div class="two">
+<div class="panel">
+<h3>🎨 Genre distribution</h3>
+<div>Pop · 3 tracks <div class="bar"><span style="width:37.5%"></span></div></div>
+<div>Indie · 2 tracks <div class="bar"><span style="width:25%"></span></div></div>
+<div>Electronic · 2 tracks <div class="bar"><span style="width:25%"></span></div></div>
+<div>Rock · 1 track <div class="bar"><span style="width:12.5%"></span></div></div>
+</div>
+<div class="panel">
+<h3>🎤 Artist distribution</h3>
+<div>Nova · 2 tracks <div class="bar"><span style="width:25%"></span></div></div>
+<div>Echo Lane · 1 track <div class="bar"><span style="width:12.5%"></span></div></div>
+<div>June Sky · 1 track <div class="bar"><span style="width:12.5%"></span></div></div>
+<div>Others · 4 tracks <div class="bar"><span style="width:50%"></span></div></div>
+</div>
+</div>
+<div class="panel" style="margin-bottom:15px">
+<h3>💡 How to improve your playlist</h3>
+<div class="insight">Explore more artists outside your current favorites to increase artist diversity.</div>
+<div class="insight">Try a new genre to discover music you might not normally encounter.</div>
+<div class="insight">Keep the balance between familiar tracks and new discoveries.</div>
+</div>
+<div class="panel">
+<h3>🎵 Your Playlist Tracks</h3>
+<input id="trackSearch" placeholder="Search sample tracks..." oninput="searchTracks()">
+<div class="tablewrap">
+<table>
+<thead><tr><th>#</th><th>Song</th><th>Artist</th><th>Album</th><th>Duration</th></tr></thead>
+<tbody id="tracks"></tbody>
+</table>
+</div>
+</div>
+<p class="note" style="margin-top:20px">TuneRate demo · All information above is illustrative sample data.</p>
+<button class="secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</button>
+</section>
 
-    <p class="subtitle">
-      Your music taste deserves a rating.
-      Discover what your Spotify playlists say about you.
-      Explore your musical identity with TuneRate.
-    </p>
+<footer id="about">TuneRate © 2026 · Independent project · Not affiliated with Spotify.</footer>
 
-    <div class="search-box">
-      <input
-        id="spotifyLink"
-        type="url"
-        placeholder="Paste your Spotify playlist link..."
-      >
-      <button onclick="analyze()">Analyze →</button>
-    </div>
+<script>
+const sampleTracks=[
+["Midnight Lights","Nova","Night Drive","3:42"],
+["Paper Planes","Echo Lane","Open Skies","3:25"],
+["Golden Hour","Nova","Night Drive","4:01"],
+["Slow Motion","June Sky","Blue Days","3:18"],
+["Electric Dreams","Pixel Hearts","Signals","3:55"],
+["Wildflower","Amber Coast","Wildflower","3:12"],
+["Afterglow","Echo Lane","Open Skies","3:48"],
+["City Rain","Silver Avenue","City Rain","3:46"]
+];
 
-    <p class="note">
-      ♧ No Spotify visitor login required · Free to explore
-    </p>
+function showTracks(items){
+document.getElementById("tracks").innerHTML=items.map((t,i)=>
+`<tr><td>${i+1}</td><td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td>${t[3]}</td></tr>`
+).join("");
+}
 
-    <div class="actions">
-      <button class="secondary" onclick="demo()">
-        ✦ Explore Demo
-      </button>
-    </div>
+function demo(){
+document.getElementById("results").style.display="block";
+showTracks(sampleTracks);
+document.getElementById("message").textContent="Demo loaded below. Clearly labelled sample data.";
+document.getElementById("results").scrollIntoView({behavior:"smooth"});
+}
 
-    <p id="message" class="note"></p>
-  </section>
+function searchTracks(){
+const q=document.getElementById("trackSearch").value.toLowerCase();
+showTracks(sampleTracks.filter(t=>t.join(" ").toLowerCase().includes(q)));
+}
 
-  <section class="features" id="features">
-    <h2>Your Music, Decoded.</h2>
-    <p>Discover more about the music you love.</p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="emoji">⭐</div>
-        <h3>Music Rating</h3>
-        <p>Discover your music taste score out of 100.</p>
-      </div>
-
-      <div class="card">
-        <div class="emoji">📊</div>
-        <h3>Music Statistics</h3>
-        <p>Explore artists, genres and playlist insights.</p>
-      </div>
-
-      <div class="card">
-        <div class="emoji">💚</div>
-        <h3>Hidden Gems</h3>
-        <p>Find new music and artists worth exploring.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer id="about">
-    TuneRate © 2026 · Made for music lovers.
-    <br><br>
-    Independent project. Not affiliated with Spotify.
-  </footer>
-
-  <script>
-    function analyze() {
-      const link = document
-        .getElementById("spotifyLink").value.trim();
-
-      const message = document.getElementById("message");
-
-      if (!link) {
-        message.textContent = "Please paste a Spotify link first.";
-        return;
-      }
-
-      if (!/^https:\/\/open\.spotify\.com\/(playlist|user)\//.test(link)) {
-        message.textContent = "Please enter a valid Spotify playlist or profile link.";
-        return;
-      }
-
-      message.textContent =
-        "Link accepted! Real playlist analysis will be added in a later development stage.";
-    }
-
-    function demo() {
-      document.getElementById("message").textContent =
-        "Demo mode is coming in our next development stage!";
-    }
-  </script>
-
+function analyze(){
+const link=document.getElementById("spotifyLink").value.trim();
+const msg=document.getElementById("message");
+try{
+const url=new URL(link);
+if(url.protocol!=="https:" || url.hostname!=="open.spotify.com"){
+msg.textContent="Please enter a valid https://open.spotify.com playlist or profile link.";
+return;
+}
+if(!/^\/(playlist|user)\//.test(url.pathname)){
+msg.textContent="Please use a Spotify playlist or profile link.";
+return;
+}
+msg.textContent="The link format is valid, but live Spotify data retrieval is not connected yet. Try Explore Demo to see how results work.";
+}catch(e){
+msg.textContent="That link doesn't look valid. Please check it and try again.";
+}
+}
+</script>
 </body>
 </html>
