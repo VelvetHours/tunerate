@@ -218,6 +218,62 @@ msg.textContent="The link format is valid, but live Spotify data retrieval is no
 }catch(e){
 msg.textContent="That link doesn't look valid. Please check it and try again.";
 }
+}function analyzeManual() {
+  const input = document.getElementById("manualSongs").value.trim();
+  const message = document.getElementById("manualMessage");
+
+  if (!input) {
+    message.textContent = "Please enter some songs first.";
+    return;
+  }
+
+  const lines = input.split("\n").filter(line => line.trim() !== "");
+
+  const songs = lines.map(line => {
+    const parts = line.split("-");
+    return {
+      title: parts[0].trim().toLowerCase(),
+      artist: parts.slice(1).join("-").trim().toLowerCase()
+    };
+  });
+
+  const totalSongs = songs.length;
+
+  const uniqueSongs = new Set(
+    songs.map(song => song.title + "|" + song.artist)
+  );
+
+  const duplicateCount = totalSongs - uniqueSongs.size;
+
+  const artists = new Set(
+    songs.map(song => song.artist).filter(Boolean)
+  );
+
+  const artistDiversity = totalSongs
+    ? Math.round((artists.size / totalSongs) * 100)
+    : 0;
+
+  const listeningMinutes = totalSongs * 3.5;
+
+  const rating = Math.min(
+    100,
+    Math.round(
+      (uniqueSongs.size / totalSongs) * 50 +
+      artistDiversity * 0.5
+    )
+  );
+
+  message.innerHTML = `
+    <strong>Analysis Complete!</strong><br><br>
+    Total Songs: ${totalSongs}<br>
+    Duplicate Songs: ${duplicateCount}<br>
+    Unique Songs: ${uniqueSongs.size}<br>
+    Different Artists: ${artists.size}<br>
+    Artist Diversity: ${artistDiversity}%<br>
+    Estimated Listening Time: ${Math.floor(listeningMinutes / 60)} hours
+    ${Math.round(listeningMinutes % 60)} minutes<br>
+    TuneRate Score: ${rating}/100
+  `;
 }
 </script>
 </body>
