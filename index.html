@@ -113,6 +113,52 @@ Bad Guy - Billie Eilish"
     </button>
 
     <p id="manualMessage" style="color:#1DB954;margin-top:15px;font-size:13px"></p>
+    <div id="manualResults" style="display:none;margin-top:25px">
+
+  <div class="panel">
+    <h2>📊 Your Music Analysis</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:20px">
+
+      <div class="panel">
+        <h3 id="totalSongs">0</h3>
+        <p>Total Songs</p>
+      </div>
+
+      <div class="panel">
+        <h3 id="duplicateSongs">0</h3>
+        <p>Duplicates</p>
+      </div>
+
+      <div class="panel">
+        <h3 id="uniqueSongs">0</h3>
+        <p>Unique Songs</p>
+      </div>
+
+      <div class="panel">
+        <h3 id="totalArtists">0</h3>
+        <p>Different Artists</p>
+      </div>
+
+      <div class="panel">
+        <h3 id="listeningTime">0</h3>
+        <p>Listening Time</p>
+      </div>
+
+      <div class="panel">
+        <h3 id="artistDiversity">0%</h3>
+        <p>Artist Diversity</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top:25px">
+      <h2 id="tuneRateScore">0/100</h2>
+      <p style="color:#aaa">Your TuneRate Score</p>
+    </div>
+
+  </div>
+    </div>
   </div>
 </section>
 <section id="results">
@@ -263,7 +309,22 @@ msg.textContent="That link doesn't look valid. Please check it and try again.";
     )
   );
 
-  message.innerHTML = `
+  document.getElementById("manualResults").style.display = "block";
+
+document.getElementById("totalSongs").textContent = totalSongs;
+document.getElementById("duplicateSongs").textContent = duplicateCount;
+document.getElementById("uniqueSongs").textContent = uniqueSongs.size;
+document.getElementById("totalArtists").textContent = artists.size;
+
+document.getElementById("listeningTime").textContent =
+  Math.floor(listeningMinutes / 60) + "h " +
+  Math.round(listeningMinutes % 60) + "m";
+
+document.getElementById("artistDiversity").textContent = artistDiversity + "%";
+
+document.getElementById("tuneRateScore").textContent = rating + "/100";
+
+message.textContent = "Analysis completed successfully!";
     <strong>Analysis Complete!</strong><br><br>
     Total Songs: ${totalSongs}<br>
     Duplicate Songs: ${duplicateCount}<br>
