@@ -260,6 +260,19 @@ Bad Guy - Billie Eilish"
   <p>🌈 Artist Diversity: <span id="reportDiversity">0%</span></p>
 
   <p>⏱️ Listening Time: <span id="reportListeningTime">0 min</span></p>
+  
+<div class="report-stat">
+  <h3>🎧 Playlist Variety Score</h3>
+  <h2 id="reportVarietyScore">0/100</h2>
+  <p id="reportVarietyRating">Calculating...</p>
+
+  <div style="background:#333;border-radius:10px;height:12px;">
+    <div id="varietyProgress"
+         style="width:0%;height:12px;background:#8b5cf6;border-radius:10px;">
+    </div>
+  </div>
+</div>
+
 </div>
     </div>
   </div>
@@ -450,10 +463,13 @@ document.getElementById("artistDominance").textContent =
 
 const uniqueSongRatio = uniqueSongs.size / totalSongs;
 
-const varietyScore = Math.round(
-  (varietyArtistRatio * 70) +
-  (uniqueSongRatio * 30)
-);
+const reportVarietyScoreValue = varietyScore;
+
+document.getElementById("reportVarietyScore").textContent =
+  reportVarietyScoreValue + "/100";
+
+document.getElementById("varietyProgress").style.width =
+  reportVarietyScoreValue + "%";
 
 let varietyDescription = "";
 
@@ -522,10 +538,36 @@ document.getElementById("reportTotalSongs").textContent = totalSongs;
 
 document.getElementById("reportArtists").textContent = artists.size;
   document.getElementById("reportTopArtist").textContent =
-    topArtist.textContent || topArtist;
+  topArtistName;
 
 document.getElementById("reportDiversity").textContent =
   artistDiversity + "%";
+  // Playlist Variety Score
+const varietyScore = Math.max(
+  0,
+  Math.min(100, Math.round(artistDiversity))
+);
+
+document.getElementById("reportVarietyScore").textContent =
+  varietyScore + "/100";
+
+document.getElementById("varietyProgress").style.width =
+  varietyScore + "%";
+
+let varietyRating = "";
+
+if (varietyScore >= 80) {
+  varietyRating = "Excellent Variety 🌟";
+} else if (varietyScore >= 60) {
+  varietyRating = "Good Variety 🎵";
+} else if (varietyScore >= 40) {
+  varietyRating = "Moderate Variety 🎧";
+} else {
+  varietyRating = "Explore More Artists 🎶";
+}
+
+document.getElementById("reportVarietyRating").textContent =
+  varietyRating;
 
 document.getElementById("reportListeningTime").textContent =
   Math.floor(listeningMinutes / 60) + "h " +
