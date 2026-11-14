@@ -331,6 +331,30 @@ function analyzeManual() {
     rating + "/100";
 
   message.textContent = "Analysis completed successfully!";
+  const artistRatio = artists.size / totalSongs;
+
+let personality = "";
+let description = "";
+
+if (artistRatio <= 0.25) {
+  personality = "The Loyal Listener";
+  description = "You enjoy listening to your favourite artists again and again.";
+} else if (artistRatio >= 0.85) {
+  personality = "The Musical Adventurer";
+  description = "You explore a wide range of artists and musical styles.";
+} else if (artistRatio >= 0.65) {
+  personality = "The Eclectic Explorer";
+  description = "You enjoy discovering different artists and sounds.";
+} else if (artistRatio >= 0.45) {
+  personality = "The Balanced Listener";
+  description = "You balance familiar favourites with musical variety.";
+} else {
+  personality = "The Mainstream Lover";
+  description = "You enjoy a familiar collection of favourite artists.";
+}
+
+document.getElementById("musicPersonality").textContent = personality;
+document.getElementById("personalityDescription").textContent = description;
   }
   </script>
 </body>
