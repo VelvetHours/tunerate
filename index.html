@@ -207,7 +207,18 @@ Bad Guy - Billie Eilish"
 
 <p id="musicTasteReportPersonalityDescription" style="color:#aaa;">
   Your music personality will appear here.
-</p> </div>
+</p><div class="music-stats">
+  <h4>📊 Your Listening Statistics</h4>
+
+  <p>🎵 Total Songs: <span id="reportTotalSongs">0</span></p>
+
+  <p>🎤 Different Artists: <span id="reportArtists">0</span></p>
+
+  <p>🌈 Artist Diversity: <span id="reportDiversity">0%</span></p>
+
+  <p>⏱️ Listening Time: <span id="reportListeningTime">0 min</span></p>
+</div>
+    </div>
   </div>
     </div>
   </div>
@@ -463,6 +474,17 @@ document.getElementById("tasteDescription").textContent =
 
   document.getElementById("tuneRateScore").textContent =
     rating + "/100";
+  // Update Music Taste Report statistics
+document.getElementById("reportTotalSongs").textContent = totalSongs;
+
+document.getElementById("reportArtists").textContent = artists.size;
+
+document.getElementById("reportDiversity").textContent =
+  artistDiversity + "%";
+
+document.getElementById("reportListeningTime").textContent =
+  Math.floor(listeningMinutes / 60) + "h " +
+  (listeningMinutes % 60) + "m";
 
   message.textContent = "Analysis completed successfully!";
   const artistRatio = artists.size / totalSongs;
