@@ -201,9 +201,11 @@ Bad Guy - Billie Eilish"
   <p id="musicTasteSummary" style="color:#aaa;">
     Your personalized music taste report will appear here.
   </p>
-   <h4 id="musicPersonality">Your Music Personality</h4>
+  <h4 id="musicTasteReportPersonality">
+  Your Music Personality
+</h4>
 
-<p id="personalityDescription" style="color:#aaa;">
+<p id="musicTasteReportPersonalityDescription" style="color:#aaa;">
   Your music personality will appear here.
 </p> </div>
   </div>
@@ -508,6 +510,12 @@ document.getElementById("musicPersonality").textContent =
   "🎭 " + personality;
 
 document.getElementById("personalityDescription").textContent =
+  personalityDescriptions[personality] ||
+  "Your music taste reflects your unique listening style.";
+  document.getElementById("musicTasteReportPersonality").textContent =
+  "🎭 " + personality;
+
+document.getElementById("musicTasteReportPersonalityDescription").textContent =
   personalityDescriptions[personality] ||
   "Your music taste reflects your unique listening style.";
   }
