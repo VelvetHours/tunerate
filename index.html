@@ -543,10 +543,16 @@ document.getElementById("reportArtists").textContent = artists.size;
 document.getElementById("reportDiversity").textContent =
   artistDiversity + "%";
   // Playlist Variety Score
-const varietyScore = Math.max(
+const reportVarietyScore = Math.max(
   0,
   Math.min(100, Math.round(artistDiversity))
 );
+
+document.getElementById("reportVarietyScore").textContent =
+  reportVarietyScore + "/100";
+
+document.getElementById("varietyProgress").style.width =
+  reportVarietyScore + "%";
 
 document.getElementById("reportVarietyScore").textContent =
   varietyScore + "/100";
