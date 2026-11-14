@@ -253,6 +253,7 @@ Bad Guy - Billie Eilish"
   <h4>📊 Your Listening Statistics</h4>
 
   <p>🎵 Total Songs: <span id="reportTotalSongs">0</span></p>
+  <p>👑 Top Artist: <span id="reportTopArtist">Not available</span></p>
 
   <p>🎤 Different Artists: <span id="reportArtists">0</span></p>
 
@@ -520,6 +521,7 @@ document.getElementById("tasteDescription").textContent =
 document.getElementById("reportTotalSongs").textContent = totalSongs;
 
 document.getElementById("reportArtists").textContent = artists.size;
+  document.getElementById("reportTopArtist").textContent = topArtist;
 
 document.getElementById("reportDiversity").textContent =
   artistDiversity + "%";
