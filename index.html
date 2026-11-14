@@ -542,31 +542,26 @@ document.getElementById("reportArtists").textContent = artists.size;
 
 document.getElementById("reportDiversity").textContent =
   artistDiversity + "%";
-  // Playlist Variety Score
-const reportVarietyScore = Math.max(
+
+// Playlist Variety Score
+const reportVarietyValue = Math.max(
   0,
   Math.min(100, Math.round(artistDiversity))
 );
 
 document.getElementById("reportVarietyScore").textContent =
-  reportVarietyScore + "/100";
+  reportVarietyValue + "/100";
 
 document.getElementById("varietyProgress").style.width =
-  reportVarietyScore + "%";
-
-document.getElementById("reportVarietyScore").textContent =
-  varietyScore + "/100";
-
-document.getElementById("varietyProgress").style.width =
-  varietyScore + "%";
+  reportVarietyValue + "%";
 
 let varietyRating = "";
 
-if (varietyScore >= 80) {
+if (reportVarietyValue >= 80) {
   varietyRating = "Excellent Variety 🌟";
-} else if (varietyScore >= 60) {
+} else if (reportVarietyValue >= 60) {
   varietyRating = "Good Variety 🎵";
-} else if (varietyScore >= 40) {
+} else if (reportVarietyValue >= 40) {
   varietyRating = "Moderate Variety 🎧";
 } else {
   varietyRating = "Explore More Artists 🎶";
@@ -575,9 +570,6 @@ if (varietyScore >= 80) {
 document.getElementById("reportVarietyRating").textContent =
   varietyRating;
 
-document.getElementById("reportListeningTime").textContent =
-  Math.floor(listeningMinutes / 60) + "h " +
-  (listeningMinutes % 60) + "m";
 
   message.textContent = "Analysis completed successfully!";
   const artistRatio = artists.size / totalSongs;
