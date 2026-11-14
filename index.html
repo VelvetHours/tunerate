@@ -265,17 +265,16 @@ msg.textContent="The link format is valid, but live Spotify data retrieval is no
 msg.textContent="That link doesn't look valid. Please check it and try again.";
 }
 }
-  function analyzeManual() {
-    alert("TuneRate button is working!");
+function analyzeManual() {
   const input = document.getElementById("manualSongs").value.trim();
   const message = document.getElementById("manualMessage");
 
   if (!input) {
-    message.textContent = "Please enter some songs first.";
+    message.textContent = "Please enter songs first!";
     return;
   }
 
-  const lines = input.split("\n").filter(line => line.trim() !== "");
+  const lines = input.split("\n").filter(line => line.trim());
 
   const songs = lines.map(line => {
     const parts = line.split("-");
@@ -297,37 +296,35 @@ msg.textContent="That link doesn't look valid. Please check it and try again.";
     songs.map(song => song.artist).filter(Boolean)
   );
 
-  const artistDiversity = totalSongs
-    ? Math.round((artists.size / totalSongs) * 100)
-    : 0;
+  const artistDiversity = Math.round(
+    artists.size / totalSongs * 100
+  );
 
   const listeningMinutes = totalSongs * 3.5;
 
-  const rating = Math.min(
-    100,
-    Math.round(
-      (uniqueSongs.size / totalSongs) * 50 +
-      artistDiversity * 0.5
-    )
+  const rating = Math.round(
+    (uniqueSongs.size / totalSongs) * 50 +
+    artistDiversity * 0.5
   );
 
   document.getElementById("manualResults").style.display = "block";
+  document.getElementById("totalSongs").textContent = totalSongs;
+  document.getElementById("duplicateSongs").textContent = duplicateCount;
+  document.getElementById("uniqueSongs").textContent = uniqueSongs.size;
+  document.getElementById("totalArtists").textContent = artists.size;
 
-document.getElementById("totalSongs").textContent = totalSongs;
-document.getElementById("duplicateSongs").textContent = duplicateCount;
-document.getElementById("uniqueSongs").textContent = uniqueSongs.size;
-document.getElementById("totalArtists").textContent = artists.size;
+  document.getElementById("listeningTime").textContent =
+    Math.floor(listeningMinutes / 60) + "h " +
+    Math.round(listeningMinutes % 60) + "m";
 
-document.getElementById("listeningTime").textContent =
-  Math.floor(listeningMinutes / 60) + "h " +
-  Math.round(listeningMinutes % 60) + "m";
+  document.getElementById("artistDiversity").textContent =
+    artistDiversity + "%";
 
-document.getElementById("artistDiversity").textContent = artistDiversity + "%";
+  document.getElementById("tuneRateScore").textContent =
+    rating + "/100";
 
-document.getElementById("tuneRateScore").textContent = rating + "/100";
-
-message.textContent = "Analysis completed successfully!";
-}
-</script>
+  message.textContent = "Analysis completed successfully!";
+  }
+  </script>
 </body>
 </html>
