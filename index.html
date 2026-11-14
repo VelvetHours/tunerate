@@ -370,6 +370,32 @@ document.getElementById("topArtistCount").textContent =
 
 document.getElementById("artistDominance").textContent =
   artistDominancePercent + "%";
+  const varietyArtistRatio = artists.size / totalSongs;
+
+const uniqueSongRatio = uniqueSongs.size / totalSongs;
+
+const varietyScore = Math.round(
+  (varietyArtistRatio * 70) +
+  (uniqueSongRatio * 30)
+);
+
+let varietyDescription = "";
+
+if (varietyScore >= 85) {
+  varietyDescription = "Amazing! Your playlist has excellent variety.";
+} else if (varietyScore >= 65) {
+  varietyDescription = "Your playlist has a good mix of songs and artists.";
+} else if (varietyScore >= 40) {
+  varietyDescription = "Your playlist has moderate musical variety.";
+} else {
+  varietyDescription = "Your playlist focuses on a smaller selection of songs and artists.";
+}
+
+document.getElementById("varietyScore").textContent =
+  varietyScore + "/100";
+
+document.getElementById("varietyDescription").textContent =
+  varietyDescription;
   document.getElementById("listeningTime").textContent =
     Math.floor(listeningMinutes / 60) + "h " +
     Math.round(listeningMinutes % 60) + "m";
