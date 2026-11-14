@@ -487,6 +487,29 @@ if (artistRatio <= 0.25) {
 
 document.getElementById("musicPersonality").textContent = personality;
 document.getElementById("personalityDescription").textContent = description;
+  const personalityDescriptions = {
+  "The Loyal Listener":
+    "You love your favorite artists and enjoy the music you know best.",
+
+  "The Musical Adventurer":
+    "You enjoy discovering new sounds, genres, and artists.",
+
+  "The Eclectic Explorer":
+    "You enjoy exploring different artists and sounds.",
+
+  "The Balanced Listener":
+    "You enjoy a balanced mix of familiar favorites and new discoveries.",
+
+  "The Mainstream Lover":
+    "You enjoy popular hits and widely loved music."
+};
+
+document.getElementById("musicPersonality").textContent =
+  "🎭 " + personality;
+
+document.getElementById("personalityDescription").textContent =
+  personalityDescriptions[personality] ||
+  "Your music taste reflects your unique listening style.";
   }
   </script>
 </body>
