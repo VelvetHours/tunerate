@@ -310,7 +310,29 @@ function analyzeManual() {
   const uniqueSongs = new Set(
     songs.map(song => song.title + "|" + song.artist)
   );
+const artistCounts = {};
 
+songs.forEach(song => {
+  if (song.artist) {
+    artistCounts[song.artist] =
+      (artistCounts[song.artist] || 0) + 1;
+  }
+});
+
+const topArtistEntry = Object.entries(artistCounts)
+  .sort((a, b) => b[1] - a[1])[0];
+
+const topArtistName = topArtistEntry
+  ? topArtistEntry[0]
+  : "Unknown";
+
+const topArtistCountValue = topArtistEntry
+  ? topArtistEntry[1]
+  : 0;
+
+const artistDominancePercent = totalSongs
+  ? Math.round((topArtistCountValue / totalSongs) * 100)
+  : 0;
   const duplicateCount = totalSongs - uniqueSongs.size;
 
   const artists = new Set(
@@ -333,7 +355,13 @@ function analyzeManual() {
   document.getElementById("duplicateSongs").textContent = duplicateCount;
   document.getElementById("uniqueSongs").textContent = uniqueSongs.size;
   document.getElementById("totalArtists").textContent = artists.size;
+document.getElementById("topArtist").textContent = topArtistName;
 
+document.getElementById("topArtistCount").textContent =
+  "Songs: " + topArtistCountValue;
+
+document.getElementById("artistDominance").textContent =
+  artistDominancePercent + "%";
   document.getElementById("listeningTime").textContent =
     Math.floor(listeningMinutes / 60) + "h " +
     Math.round(listeningMinutes % 60) + "m";
