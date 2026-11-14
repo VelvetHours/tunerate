@@ -521,7 +521,8 @@ document.getElementById("tasteDescription").textContent =
 document.getElementById("reportTotalSongs").textContent = totalSongs;
 
 document.getElementById("reportArtists").textContent = artists.size;
-  document.getElementById("reportTopArtist").textContent = topArtist;
+  document.getElementById("reportTopArtist").textContent =
+    topArtist.textContent || topArtist;
 
 document.getElementById("reportDiversity").textContent =
   artistDiversity + "%";
