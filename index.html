@@ -196,6 +196,16 @@ Bad Guy - Billie Eilish"
     Your listening habits will appear here.
   </p>
   </div>
+    <div class="card" id="musicTasteReport">
+  <h3>🎵 Your Music Taste Report</h3>
+  <p id="musicTasteSummary" style="color:#aaa;">
+    Your personalized music taste report will appear here.
+  </p>
+   <h4 id="musicPersonality">Your Music Personality</h4>
+
+<p id="personalityDescription" style="color:#aaa;">
+  Your music personality will appear here.
+</p> </div>
   </div>
     </div>
   </div>
@@ -438,6 +448,10 @@ document.getElementById("tasteTitle").textContent =
 
 document.getElementById("tasteDescription").textContent =
   tasteDescription;
+  document.getElementById("musicTasteSummary").textContent =
+  tasteTitle + ": " + tasteDescription +
+  " Your playlist contains " + totalSongs +
+  " songs by " + artists.size + " different artists.";
   document.getElementById("listeningTime").textContent =
     Math.floor(listeningMinutes / 60) + "h " +
     Math.round(listeningMinutes % 60) + "m";
