@@ -264,7 +264,8 @@ msg.textContent="The link format is valid, but live Spotify data retrieval is no
 }catch(e){
 msg.textContent="That link doesn't look valid. Please check it and try again.";
 }
-}function analyzeManual() {
+}
+  function analyzeManual() {
   const input = document.getElementById("manualSongs").value.trim();
   const message = document.getElementById("manualMessage");
 
