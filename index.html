@@ -406,6 +406,38 @@ document.getElementById("varietyScore").textContent =
 
 document.getElementById("varietyDescription").textContent =
   varietyDescription;
+  const repeatRatio = duplicateCount / totalSongs;
+const artistVariety = artists.size / totalSongs;
+
+let tasteTitle = "";
+let tasteDescription = "";
+
+if (repeatRatio >= 0.30) {
+  tasteTitle = "The Comfort Listener";
+  tasteDescription =
+    "You enjoy returning to familiar songs and favourites.";
+
+} else if (artistVariety >= 0.75) {
+  tasteTitle = "The Curious Listener";
+  tasteDescription =
+    "You enjoy exploring different artists and discovering new music.";
+
+} else if (artistVariety >= 0.45) {
+  tasteTitle = "The Balanced Listener";
+  tasteDescription =
+    "You balance familiar favourites with a variety of artists.";
+
+} else {
+  tasteTitle = "The Focused Listener";
+  tasteDescription =
+    "You enjoy a more focused collection of favourite artists.";
+}
+
+document.getElementById("tasteTitle").textContent =
+  tasteTitle;
+
+document.getElementById("tasteDescription").textContent =
+  tasteDescription;
   document.getElementById("listeningTime").textContent =
     Math.floor(listeningMinutes / 60) + "h " +
     Math.round(listeningMinutes % 60) + "m";
